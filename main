@@ -1,0 +1,120 @@
+import random
+def randNum(min,max):
+    return random.randint(min,max)
+deckSize = 108
+MAX_CARDS = 2
+MAX_WILD = 4
+MAX_ZERO = 1
+MAX_DRAW_2 = 2
+MAX_WILD_DRAW_4 = 2
+MAX_REVERSE = 2
+MAX_SKIP = 2
+playerCount = 0
+wildCount = 0
+zeroCount = 0
+draw2Count = 0
+wildDraw4Count = 0
+reverseCount = 0
+skipCount = 0
+card =[]
+deck = []
+special = []
+specialCard = []
+player1Hand = []
+player2Hand = []
+player3Hand = []
+player4Hand = []
+numbers = [' 0 ',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ',' 6 ',' 7 ',' 8 ',' 9 ']
+colors = ['Red ','Green','Yellow','Blue']
+special = [' Draw 2',' Wild Draw 4',' Wild',' Reverse',' Skip']
+while(deckSize > 0):
+    card = numbers[randNum(0,len(numbers)-1)] + colors[randNum(0,len(colors)-1)]
+    specialCard = special[randNum(0,len(special)-1)]
+    deck.append(card)
+    num = randNum(0,3)
+    for i in range(0,deckSize):
+        num = 0
+        print(deck[num],num)
+        num += 1
+
+    if(num == 2):
+        deck.append(specialCard)
+    deckSize -= 1
+print("How many people are playing?")
+playerCount = int(input())
+if(playerCount <= 0):
+    while(playerCount <= 0):
+        print("Silly goose, you cant play with", playerCount, "people.\nPlease try again.")
+        playerCount = int(input())
+elif(playerCount == 1):
+    while(playerCount == 1):
+        print("Silly goose, you cant play by yourself.\nPlease try again.")
+        playerCount = int(input())
+if(playerCount > 4):
+    print("Sorry the max players are 4.")
+elif(playerCount == 4):
+    print("Player 1 enter your name.")
+    player1Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0,len(deck)-1)
+        player1Hand.append(deck[num])
+        del deck[num]
+    print("Player 2 enter your name.")
+    player2Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player2Hand.append(deck[num])
+        del deck[num]
+    print("Player 3 enter your name.")
+    player3Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player3Hand.append(deck[num])
+        del deck[num]
+    print("Player 4 enter your name.")
+    player4Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player4Hand.append(deck[num])
+        del deck[num]
+elif(playerCount == 3):
+    print("Player 1 enter your name.")
+    player1Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0,len(deck)-1)
+        player1Hand.append(deck[num])
+        del deck[num]
+    print("Player 2 enter your name.")
+    player2Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player2Hand.append(deck[num])
+        del deck[num]
+    print("Player 3 enter your name.")
+    player3Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player3Hand.append(deck[num])
+        del deck[num]
+elif(playerCount == 2):
+    print("Player 1 enter your name.")
+    player1Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0,len(deck)-1)
+        player1Hand.append(deck[num])
+        del deck[num]
+    print("Player 2 enter your name.")
+    player2Name = input().capitalize()
+    for i in range(7):
+        num = randNum(0, len(deck) - 1)
+        player2Hand.append(deck[num])
+        del deck[num]
+print(player1Name+"'s hand:",player1Hand)
+for i in range(20):
+    print("")
+print(player2Name+"'s hand:",player2Hand)
+print("")
+print(player3Name+"'s hand:",player3Hand)
+print("")
+print(player4Name+"'s hand:",player4Hand)
+goFirst = randNum(0,playerCount)
